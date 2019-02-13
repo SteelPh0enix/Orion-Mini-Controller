@@ -12,6 +12,9 @@
 constexpr unsigned DIGITAL_PIN_START{2};
 constexpr unsigned DIGITAL_PIN_END{53};
 
+// Pin mode set for all the pins. Change to INPUT if you don't need pull-up
+constexpr unsigned PIN_MODE{INPUT_PULLUP};
+
 constexpr unsigned long SERIAL_BAUD_RATE{9600};
 constexpr unsigned long SLEEP_TIME{100};
 
@@ -31,7 +34,7 @@ void setup() {
 
   // Init pins
   for (unsigned i{DIGITAL_PIN_START}; i <= DIGITAL_PIN_END; i++) {
-    pinMode(i, INPUT_PULLUP);
+    pinMode(i, PIN_MODE);
   }
 }
 
