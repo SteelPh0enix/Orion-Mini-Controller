@@ -2,7 +2,7 @@
 
 ## Project description
 
-Orion Mini is a small rover constructed by Dr. Maciejewski for his kids to play with. Since his software ([which is also available in this repository](old_code)) looks like made in stone age, i decided to rewrite everything and make it possibly faster, easier to modify/expand and slightly modular.
+Orion Mini is a small rover constructed by Dr. Marcin Maciejewski (from Lublin University of Technology) for his kids to play with. Since his software ([which is also available in this repository](old_code)) looks like made in stone age, i decided to rewrite everything and make it possibly faster, easier to modify/expand and slightly modular.
 
 ## Repository
 
