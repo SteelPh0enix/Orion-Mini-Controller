@@ -1,15 +1,22 @@
 /*
-  Simple digital pin discoverer.
+  Simple digital, dependency-free, configurable pin discoverer.
 
   Author: Wojciech Olech (https://gitlab.com/SteelPh0enix/)
 */
 
 #include <Arduino.h>
-#include <constants.hpp>
 
-// Constants for scanning
+// === Configuration ===
+
+// Constants for scanning. Change if you'll want to shrink range of checked pins
 constexpr unsigned DIGITAL_PIN_START{2};
 constexpr unsigned DIGITAL_PIN_END{53};
+
+constexpr unsigned long SERIAL_BAUD_RATE{9600};
+constexpr unsigned long SLEEP_TIME{100};
+
+// === End of configuration ===
+
 constexpr unsigned DIGITAL_PIN_AMOUNT{DIGITAL_PIN_END - DIGITAL_PIN_START};
 
 // Data arrays
@@ -20,7 +27,7 @@ void setup() {
   memset(digital_states, true, DIGITAL_PIN_AMOUNT * sizeof(bool));
 
   // Init serial
-  Serial.begin(SerialConstants::BaudRate);
+  Serial.begin(SERIAL_BAUD_RATE);
 
   // Init pins
   for (unsigned i{DIGITAL_PIN_START}; i <= DIGITAL_PIN_END; i++) {
@@ -40,5 +47,5 @@ void loop() {
       Serial.println(!state);
     }
   }
-  delay(100);
+  delay(SLEEP_TIME);
 }
