@@ -26,8 +26,9 @@ constexpr unsigned DIGITAL_PIN_AMOUNT{DIGITAL_PIN_END - DIGITAL_PIN_START};
 bool digital_states[DIGITAL_PIN_AMOUNT];
 
 void setup() {
-  // Init memory
-  memset(digital_states, true, DIGITAL_PIN_AMOUNT * sizeof(bool));
+  // Init memory. Conditional memset to avoid initial data waterfall
+  memset(digital_states, (PIN_MODE == INPUT_PULLUP ? true : false),
+         DIGITAL_PIN_AMOUNT * sizeof(bool));
 
   // Init serial
   Serial.begin(SERIAL_BAUD_RATE);
