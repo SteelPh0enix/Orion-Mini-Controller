@@ -37,7 +37,7 @@ void loop() {
       Serial.print("Pin #");
       Serial.print(i + DIGITAL_PIN_START);
       Serial.print(": digital state changed to ");
-      Serial.println(!state);
+      Serial.println(state);
     }
   }
   delay(100);

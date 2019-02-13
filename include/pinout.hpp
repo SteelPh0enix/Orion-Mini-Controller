@@ -22,7 +22,7 @@ constexpr unsigned TRIPOS_SWITCH_RIGHT_DOWN{31};
 constexpr unsigned TRIPOS_SWITCH_RIGHT_UP{30};
 
 // Joypad buttons. Those are odd, because when set as INPUT_PULLUP, they return
-// 1 when pressed, in opposite to the rest of buttons
+// 0 when pressed, in opposite to the rest of buttons
 constexpr unsigned BUTTON_JOYPAD_LEFT{28};
 constexpr unsigned BUTTON_JOYPAD_RIGHT{29};
 
