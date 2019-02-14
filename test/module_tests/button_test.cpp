@@ -13,10 +13,6 @@ void setup() {
   buttons[3] = Button(Pinout::BUTTON_CONTROL_4);
   buttons[4] = Button(Pinout::BUTTON_CONTROL_5);
 
-  for (unsigned i{0}; i < 5; i++) {
-    buttons[i].set_flip_state(false);
-  }
-
   Serial.begin(SerialConstants::BaudRate);
 }
 
