@@ -65,7 +65,7 @@ class Button : public ArduinoModule {
   }
 
  private:
-  bool m_flip_state{true};
+  bool m_flip_state{false};
   unsigned m_button_pin{};
   unsigned m_button_input_mode{INPUT_PULLUP};
 };
