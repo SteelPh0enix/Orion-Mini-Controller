@@ -30,11 +30,19 @@ void Joypad::calibrate_y() { m_y_axis.calibrate(); }
 inline int Joypad::x_axis_raw() const { return m_x_axis.read_raw(); }
 inline int Joypad::y_axis_raw() const { return m_y_axis.read_raw(); }
 
-inline int Joypad::x_axis() const { return m_x_axis.read(); }
-inline int Joypad::y_axis() const { return m_y_axis.read(); }
+inline int Joypad::x_axis() const {
+  return m_invert_x ? -m_x_axis.read() : m_x_axis.read();
+}
+
+inline int Joypad::y_axis() const {
+  return m_invert_y ? -m_y_axis.read() : m_y_axis.read();
+}
 
 Joypad::Data Joypad::read_raw() const { return {x_axis_raw(), y_axis_raw()}; }
 Joypad::Data Joypad::read() const { return {x_axis(), y_axis()}; }
 
 unsigned Joypad::x_pin() const { return m_x_axis.pin(); }
 unsigned Joypad::y_pin() const { return m_y_axis.pin(); }
+
+void Joypad::invert_x(bool inv) { m_invert_x = inv; }
+void Joypad::invert_y(bool inv) { m_invert_y = inv; }

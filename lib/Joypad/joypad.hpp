@@ -46,6 +46,13 @@ class Joypad : ArduinoModule {
   unsigned x_pin() const;
   unsigned y_pin() const;
 
+  // This function inverts sign of returned value from pad X and Y axes
+  void invert_x(bool inv);
+  void invert_y(bool inv);
+
  private:
   AnalogControl m_x_axis{}, m_y_axis{};
+
+  bool m_invert_x{false};
+  bool m_invert_y{false};
 };
