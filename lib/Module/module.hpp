@@ -6,6 +6,9 @@
 
 class ArduinoModule {
  public:
+  // Change it if you'll use the modules with different ADC resolution
+  constexpr static unsigned ADC_RESOLUTION_VALUE{1024};
+
   virtual bool initialize() = 0;
 
   bool initialized() const { return m_initialized; }
@@ -14,7 +17,4 @@ class ArduinoModule {
  protected:
   bool m_initialized{false};
   bool m_pins_set{false};
-
-  // Change it if you'll use the modules with different ADC resolution
-  constexpr static unsigned ADC_RESOLUTION_VALUE{1024};
 };

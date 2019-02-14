@@ -7,7 +7,6 @@ Button::Button(unsigned button_pin, unsigned mode, bool init) {
 
 bool Button::initialize() {
   if (!pins_set()) return false;
-  if (initialized()) return true;
 
   pinMode(m_button_pin, m_button_input_state);
   m_initialized = true;

@@ -1,12 +1,12 @@
 #pragma once
 #include <Arduino.h>
-#include "../Module/module.hpp"
+#include "../AnalogControl/analog_control.hpp"
 
 /*
   Joypad class
 */
 
-class Joypad : public ArduinoModule {
+class Joypad : ArduinoModule {
  public:
   // Structures
   struct Data {
@@ -44,14 +44,5 @@ class Joypad : public ArduinoModule {
   Data read() const;
 
  private:
-  // `true` for X, `false` for Y
-  // Internal usage only.
-  inline int normalize_x(int value) const;
-  inline int normalize_y(int value) const;
-
-  unsigned m_x_axis{};
-  unsigned m_y_axis{};
-
-  int m_x_calibration{ADC_RESOLUTION_VALUE / 2};
-  int m_y_calibration{ADC_RESOLUTION_VALUE / 2};
+  AnalogControl m_x_axis{}, m_y_axis{};
 };
