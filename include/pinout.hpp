@@ -45,12 +45,12 @@ constexpr unsigned JOYPAD_PRIMARY_RIGHT_X{A7};
 constexpr unsigned JOYPAD_PRIMARY_RIGHT_Y{A6};
 
 // Going right decreases value
-constexpr unsigned JOYPAD_ADDITIONAL_LEFT_X{};
+constexpr unsigned JOYPAD_ADDITIONAL_LEFT_X{A9};
 // Going up increases value
-constexpr unsigned JOYPAD_ADDITIONAL_LEFT_Y{};
+constexpr unsigned JOYPAD_ADDITIONAL_LEFT_Y{A8};
 
 // Going right increases value
-constexpr unsigned JOYPAD_ADDITIONAL_RIGHT_X{};
+constexpr unsigned JOYPAD_ADDITIONAL_RIGHT_X{A11};
 // Going up decreases value
-constexpr unsigned JOYPAD_ADDITIONAL_RIGHT_Y{};
+constexpr unsigned JOYPAD_ADDITIONAL_RIGHT_Y{A10};
 }  // namespace Pinout
