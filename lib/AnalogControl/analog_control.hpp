@@ -23,6 +23,8 @@ class AnalogControl : public ArduinoModule {
   int read_raw() const;
   int read() const;
 
+  unsigned pin() const;
+
  private:
   int normalize(int value) const;
 

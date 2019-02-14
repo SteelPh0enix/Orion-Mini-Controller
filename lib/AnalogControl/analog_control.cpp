@@ -25,3 +25,5 @@ int AnalogControl::read_raw() const { return analogRead(m_pin); }
 int AnalogControl::read() const { return normalize(read_raw()); }
 
 int AnalogControl::normalize(int value) const { return value - m_calibration; }
+
+unsigned AnalogControl::pin() const { return m_pin; }

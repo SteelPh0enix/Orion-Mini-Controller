@@ -35,3 +35,6 @@ inline int Joypad::y_axis() const { return m_y_axis.read(); }
 
 Joypad::Data Joypad::read_raw() const { return {x_axis_raw(), y_axis_raw()}; }
 Joypad::Data Joypad::read() const { return {x_axis(), y_axis()}; }
+
+unsigned Joypad::x_pin() const { return m_x_axis.pin(); }
+unsigned Joypad::y_pin() const { return m_y_axis.pin(); }

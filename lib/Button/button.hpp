@@ -11,7 +11,7 @@ class Button : public ArduinoModule {
   // Constructors
 
   Button() = default;
-  Button(unsigned button_pin, unsigned mode = INPUT_PULLUP, bool init = true);
+  Button(unsigned button_pin, bool init = true, unsigned mode = INPUT_PULLUP);
 
   // Initialization functions
 
@@ -33,7 +33,7 @@ class Button : public ArduinoModule {
   unsigned pin() const;
 
   // Returns INPUT or INPUT_PULLUP
-  unsigned input_state() const;
+  unsigned input_mode() const;
 
   // Returns state of flip (if it negates readed value or not)
   bool flip_state() const;
@@ -41,5 +41,5 @@ class Button : public ArduinoModule {
  private:
   bool m_flip_state{true};
   unsigned m_button_pin{};
-  unsigned m_button_input_state{INPUT_PULLUP};
+  unsigned m_button_input_mode{INPUT_PULLUP};
 };

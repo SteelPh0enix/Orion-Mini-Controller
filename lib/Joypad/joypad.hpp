@@ -43,6 +43,9 @@ class Joypad : ArduinoModule {
   // Read normalized data from joypad
   Data read() const;
 
+  unsigned x_pin() const;
+  unsigned y_pin() const;
+
  private:
   AnalogControl m_x_axis{}, m_y_axis{};
 };
