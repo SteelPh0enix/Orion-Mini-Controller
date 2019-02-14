@@ -22,10 +22,12 @@ void setup() {
 
 void loop() {
   for (unsigned i{0}; i < 5; i++) {
-    Serial.print("Button #");
-    Serial.print(i + 1);
-    Serial.print(" state is ");
-    Serial.println(buttons[i].read() ? "ON" : "OFF");
+    buttons[i].do_if_pressed([&]() {
+      Serial.print("Button #");
+      Serial.print(i + 1);
+      Serial.print(" state is ");
+      Serial.println(buttons[i].read() ? "ON" : "OFF");
+    });
   }
 
   Serial.println();

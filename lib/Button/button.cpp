@@ -29,21 +29,3 @@ bool Button::read() const {
 unsigned Button::pin() const { return m_button_pin; }
 unsigned Button::input_mode() const { return m_button_input_mode; }
 bool Button::flip_state() const { return m_flip_state; }
-
-void Button::do_if_pressed(Button::ButtonFunction function,
-                           unsigned sleep_time) {
-  if (read()) {
-    function();
-    while (read()) {
-      delay(sleep_time);
-    }
-  }
-}
-
-void Button::do_while_pressed(Button::ButtonFunction function,
-                              unsigned sleep_time) {
-  while (read()) {
-    function();
-    delay(sleep_time);
-  }
-}

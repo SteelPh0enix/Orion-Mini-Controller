@@ -38,19 +38,31 @@ class Button : public ArduinoModule {
   // Returns state of flip (if it negates readed value or not)
   bool flip_state() const;
 
-  using ButtonFunction = void (*)();
-
   // This function executes a functor/lambda/anything callable with void(*)()
   // signature if button is pressed at the moment of calling, and then blocks
   // until button is un-pressed Note: If flip state is set that default button
   // state is ON, then it won't work properly. `sleep_time` is time which should
   // be waited before checking button state again when blocked. 10ms by default.
-  void do_if_pressed(ButtonFunction function, unsigned sleep_time = 10);
+  template <typename F>
+  void do_if_pressed(F function, unsigned sleep_time = 10) {
+    if (read()) {
+      function();
+      while (read()) {
+        delay(sleep_time);
+      }
+    }
+  }
 
   // This function executes a functor/lambda/anything callable with void(*)()
   // signature while button is pressed.
   // Same rules as above. `sleep_time` designates time between function calls.
-  void do_while_pressed(ButtonFunction function, unsigned sleep_time = 10);
+  template <typename F>
+  void do_while_pressed(F function, unsigned sleep_time = 10) {
+    while (read()) {
+      function();
+      delay(sleep_time);
+    }
+  }
 
  private:
   bool m_flip_state{true};

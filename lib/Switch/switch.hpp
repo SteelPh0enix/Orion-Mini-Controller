@@ -30,16 +30,30 @@ class Switch : public ArduinoModule {
 
   unsigned input_mode() const;
 
-  using SwitchFunction = void (*)(State);
-
   // This function takes a functor/lambda/anything callable with void(*)(State)
   // signature when switch is in non-off state (state will be passed as argument
   // to functor). Similar to `Button::do_if_pressed`, check it out for detailed
   // description.
-  void do_if_active(SwitchFunction function, unsigned sleep_time = 10);
+  template <typename F>
+  void do_if_active(F function, unsigned sleep_time = 10) {
+    auto state = read();
+    if (state != Switch::State::Off) {
+      function(state);
+      while (read() != Switch::State::Off) {
+        delay(sleep_time);
+      }
+    }
+  }
 
   // Similar to above, but executes until switch goes back into off state
-  void do_while_active(SwitchFunction function, unsigned sleep_time = 10);
+  template <typename F>
+  void do_while_active(F function, unsigned sleep_time = 10) {
+    Switch::State state;
+    while ((state = read()) != Switch::State::Off) {
+      function(state);
+      delay(sleep_time);
+    }
+  }
 
  private:
   Button m_up{}, m_down{};

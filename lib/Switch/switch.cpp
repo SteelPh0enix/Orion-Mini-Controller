@@ -35,23 +35,3 @@ unsigned Switch::pin_up() const { return m_up.pin(); }
 unsigned Switch::pin_down() const { return m_down.pin(); }
 
 unsigned Switch::input_mode() const { return m_up.input_mode(); }
-
-void Switch::do_if_active(Switch::SwitchFunction function,
-                          unsigned sleep_time = 10) {
-  auto state = read();
-  if (state != Switch::State::Off) {
-    function(state);
-    while (read() != Switch::State::Off) {
-      delay(sleep_time);
-    }
-  }
-}
-
-void Switch::do_while_active(Switch::SwitchFunction function,
-                             unsigned sleep_time = 10) {
-  Switch::State state;
-  while ((state = read()) != Switch::State::Off) {
-    function(state);
-    delay(sleep_time);
-  }
-}
