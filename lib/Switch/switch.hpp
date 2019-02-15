@@ -55,6 +55,6 @@ class Switch : public ArduinoModule {
     }
   }
 
- private:
+ protected:
   Button m_up{}, m_down{};
 };

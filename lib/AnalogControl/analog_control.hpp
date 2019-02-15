@@ -25,7 +25,7 @@ class AnalogControl : public ArduinoModule {
 
   unsigned pin() const;
 
- private:
+ protected:
   int normalize(int value) const;
 
   unsigned m_pin{};

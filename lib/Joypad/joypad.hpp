@@ -50,7 +50,7 @@ class Joypad : ArduinoModule {
   void invert_x(bool inv);
   void invert_y(bool inv);
 
- private:
+ protected:
   AnalogControl m_x_axis{}, m_y_axis{};
 
   bool m_invert_x{false};
