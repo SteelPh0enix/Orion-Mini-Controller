@@ -7,11 +7,11 @@
 Button buttons[5];
 
 void setup() {
-  buttons[0] = Button(Pinout::BUTTON_CONTROL_1);
-  buttons[1] = Button(Pinout::BUTTON_CONTROL_2);
-  buttons[2] = Button(Pinout::BUTTON_CONTROL_3);
-  buttons[3] = Button(Pinout::BUTTON_CONTROL_4);
-  buttons[4] = Button(Pinout::BUTTON_CONTROL_5);
+  buttons[0] = Button(Pin::BUTTON_CONTROL_1);
+  buttons[1] = Button(Pin::BUTTON_CONTROL_2);
+  buttons[2] = Button(Pin::BUTTON_CONTROL_3);
+  buttons[3] = Button(Pin::BUTTON_CONTROL_4);
+  buttons[4] = Button(Pin::BUTTON_CONTROL_5);
 
   Serial.begin(SerialConstants::BaudRate);
 }

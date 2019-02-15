@@ -9,14 +9,12 @@ Joypad main_left, main_right, opt_left, opt_right;
 void setup() {
   Serial.begin(SerialConstants::BaudRate);
 
-  main_left.set_pins(Pinout::JOYPAD_PRIMARY_LEFT_X,
-                     Pinout::JOYPAD_PRIMARY_LEFT_Y);
-  main_right.set_pins(Pinout::JOYPAD_PRIMARY_RIGHT_X,
-                      Pinout::JOYPAD_PRIMARY_RIGHT_Y);
-  opt_left.set_pins(Pinout::JOYPAD_ADDITIONAL_LEFT_X,
-                    Pinout::JOYPAD_ADDITIONAL_LEFT_Y);
-  opt_right.set_pins(Pinout::JOYPAD_ADDITIONAL_RIGHT_X,
-                     Pinout::JOYPAD_ADDITIONAL_RIGHT_Y);
+  main_left.set_pins(Pin::JOYPAD_PRIMARY_LEFT_X, Pin::JOYPAD_PRIMARY_LEFT_Y);
+  main_right.set_pins(Pin::JOYPAD_PRIMARY_RIGHT_X, Pin::JOYPAD_PRIMARY_RIGHT_Y);
+  opt_left.set_pins(Pin::JOYPAD_ADDITIONAL_LEFT_X,
+                    Pin::JOYPAD_ADDITIONAL_LEFT_Y);
+  opt_right.set_pins(Pin::JOYPAD_ADDITIONAL_RIGHT_X,
+                     Pin::JOYPAD_ADDITIONAL_RIGHT_Y);
 
   main_left.initialize();
   main_right.initialize();

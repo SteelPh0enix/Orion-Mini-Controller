@@ -9,9 +9,8 @@ Switch left{}, right{};
 void setup() {
   Serial.begin(SerialConstants::BaudRate);
 
-  left.set_pins(Pinout::TRIPOS_SWITCH_LEFT_DOWN, Pinout::TRIPOS_SWITCH_LEFT_UP);
-  right.set_pins(Pinout::TRIPOS_SWITCH_RIGHT_DOWN,
-                 Pinout::TRIPOS_SWITCH_RIGHT_UP);
+  left.set_pins(Pin::TRIPOS_SWITCH_LEFT_DOWN, Pin::TRIPOS_SWITCH_LEFT_UP);
+  right.set_pins(Pin::TRIPOS_SWITCH_RIGHT_DOWN, Pin::TRIPOS_SWITCH_RIGHT_UP);
 
   left.initialize();
   right.initialize();

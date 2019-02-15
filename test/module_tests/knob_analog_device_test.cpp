@@ -11,10 +11,10 @@ Knob* knobs[4]{&top_left, &top_right, &front_left, &front_right};
 void setup() {
   Serial.begin(SerialConstants::BaudRate);
 
-  top_left.set_pins(Pinout::KNOB_TOP_LEFT);
-  top_right.set_pins(Pinout::KNOB_TOP_RIGHT);
-  front_left.set_pins(Pinout::KNOB_FRONT_LEFT);
-  front_right.set_pins(Pinout::KNOB_FRONT_RIGHT);
+  top_left.set_pins(Pin::KNOB_TOP_LEFT);
+  top_right.set_pins(Pin::KNOB_TOP_RIGHT);
+  front_left.set_pins(Pin::KNOB_FRONT_LEFT);
+  front_right.set_pins(Pin::KNOB_FRONT_RIGHT);
 
   for (int i = 0; i < 4; i++) {
     knobs[i]->initialize();

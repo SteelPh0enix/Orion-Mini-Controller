@@ -7,7 +7,7 @@
 // TYPE - type of control, for example BUTTON or TRIPOS_SWITCH
 // POSITION - position in remote (or role of control)
 // INFO - additional information, optional
-namespace Pinout {
+namespace Pin {
 // 5 front clicky control buttons. Counting from left to right.
 constexpr unsigned BUTTON_CONTROL_1{27};
 constexpr unsigned BUTTON_CONTROL_2{26};
@@ -53,4 +53,4 @@ constexpr unsigned JOYPAD_ADDITIONAL_LEFT_Y{A8};
 constexpr unsigned JOYPAD_ADDITIONAL_RIGHT_X{A11};
 // Going up decreases value
 constexpr unsigned JOYPAD_ADDITIONAL_RIGHT_Y{A10};
-}  // namespace Pinout
+}  // namespace Pin
