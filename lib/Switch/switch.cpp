@@ -20,8 +20,8 @@ void Switch::set_pins(unsigned pin_down, unsigned pin_up, unsigned mode) {
 }
 
 Switch::State Switch::read() const {
-  if (m_up.read()) return Switch::State::Up;
-  if (m_down.read()) return Switch::State::Down;
+  if (m_up.pressed()) return Switch::State::Up;
+  if (m_down.pressed()) return Switch::State::Down;
   return Switch::State::Off;
 }
 
