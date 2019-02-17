@@ -25,7 +25,7 @@ class Button : public ArduinoModule {
   void set_flip_state(bool state);
 
   // Read the state of button
-  bool read() const;
+  bool pressed() const;
 
   // Getters
 

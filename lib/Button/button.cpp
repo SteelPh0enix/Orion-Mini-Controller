@@ -21,7 +21,7 @@ void Button::set_pins(unsigned button_pin, unsigned mode) {
 
 void Button::set_flip_state(bool state) { m_flip_state = state; }
 
-bool Button::read() const {
+bool Button::pressed() const {
   bool state = digitalRead(m_button_pin);
   return (m_flip_state ? !state : state);
 }

@@ -66,9 +66,9 @@ void Controller::initialize() {
     m_joypads[i].initialize();
   }
 
-  calibrate();
-
   m_initialized = true;
+
+  calibrate();
 }
 
 bool Controller::initialized() const { return m_initialized; }
