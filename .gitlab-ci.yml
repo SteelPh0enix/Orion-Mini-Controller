@@ -2,8 +2,8 @@ stages:
   - build
 
 before_script:
-  - apt update
-  - apt install python python-setuptools python-pip
+  - apt update -qq
+  - apt install -y -qq python python-setuptools python-pip
   - "pip install -U platformio"
 
 job:
