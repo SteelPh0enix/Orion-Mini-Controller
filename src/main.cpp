@@ -18,16 +18,18 @@ void setup() {
 }
 
 void loop() {
-  if (controller.get_button(Controller::Button1)->pressed()) {
+  controller.get_button(Controller::Button1)->do_if_pressed([&] {
     parser.parse_command(Command::Stop, data_buffer);
     controller.calibrate();
-  } else if (controller.get_button(Controller::Button2)->pressed()) {
+  });
+
+  controller.get_button(Controller::Button4)->do_if_pressed([&] {
     comms.print_debug_data();
-  } else if (controller.get_button(Controller::Button5)->pressed()) {
+  });
+
+  controller.get_button(Controller::Button5)->do_if_pressed([&] {
     serial_state = !serial_state;
-  } else {
-    parser.parse_movement(controller, data_buffer);
-  }
+  });
 
   comms.send_data(data_buffer, strlen(data_buffer));
 

@@ -44,10 +44,10 @@ class Button : public ArduinoModule {
   // state is ON, then it won't work properly. `sleep_time` is time which should
   // be waited before checking button state again when blocked. 10ms by default.
   template <typename F>
-  void do_if_pressed(F function, unsigned sleep_time = 10) {
-    if (read()) {
+  void do_if_pressed(F function, unsigned sleep_time = 10) const {
+    if (pressed()) {
       function();
-      while (read()) {
+      while (pressed()) {
         delay(sleep_time);
       }
     }
@@ -57,8 +57,8 @@ class Button : public ArduinoModule {
   // signature while button is pressed.
   // Same rules as above. `sleep_time` designates time between function calls.
   template <typename F>
-  void do_while_pressed(F function, unsigned sleep_time = 10) {
-    while (read()) {
+  void do_while_pressed(F function, unsigned sleep_time = 10) const {
+    while (pressed()) {
       function();
       delay(sleep_time);
     }

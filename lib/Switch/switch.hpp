@@ -35,7 +35,7 @@ class Switch : public ArduinoModule {
   // to functor). Similar to `Button::do_if_pressed`, check it out for detailed
   // description.
   template <typename F>
-  void do_if_active(F function, unsigned sleep_time = 10) {
+  void do_if_active(F function, unsigned sleep_time = 10) const {
     auto state = read();
     if (state != Switch::State::Off) {
       function(state);
@@ -47,7 +47,7 @@ class Switch : public ArduinoModule {
 
   // Similar to above, but executes until switch goes back into off state
   template <typename F>
-  void do_while_active(F function, unsigned sleep_time = 10) {
+  void do_while_active(F function, unsigned sleep_time = 10) const {
     Switch::State state;
     while ((state = read()) != Switch::State::Off) {
       function(state);
