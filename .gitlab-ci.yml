@@ -1,0 +1,11 @@
+image: python2.7
+
+stages:
+  - build
+
+before_script:
+  - "pip install -U platformio"
+
+job:
+  stage: build
+  script: "pio run"
