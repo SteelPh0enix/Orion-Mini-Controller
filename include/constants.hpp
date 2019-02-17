@@ -6,7 +6,7 @@
 
 // Namespace for serial port constants
 namespace SerialConstant {
-constexpr bool EnabledByDefault{true};
+constexpr bool EnabledByDefault{false};
 constexpr unsigned long BaudRate{128000};
 }  // namespace SerialConstant
 
@@ -21,3 +21,8 @@ constexpr const char* ArmCramp{"ACRP"};
 }  // namespace JsonConstant
 
 enum class Command { None, Stop };
+
+namespace RF24Constant {
+constexpr unsigned char radio_address[5]{0x00, 0xDE, 0xAD, 0xBE, 0xEF};
+constexpr unsigned char rover_address[5]{0xFF, 0xDE, 0xAD, 0xBE, 0xEF};
+}  // namespace RF24Constant

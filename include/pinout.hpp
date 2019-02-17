@@ -53,4 +53,8 @@ constexpr unsigned JOYPAD_ADDITIONAL_LEFT_Y{A8};
 constexpr unsigned JOYPAD_ADDITIONAL_RIGHT_X{A11};
 // Going up decreases value
 constexpr unsigned JOYPAD_ADDITIONAL_RIGHT_Y{A10};
+
+// nRF24L01 pinout
+constexpr unsigned RF24_ENABLE{9};
+constexpr unsigned RF24_SELECT{10};
 }  // namespace Pin
