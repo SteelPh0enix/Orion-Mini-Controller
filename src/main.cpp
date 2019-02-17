@@ -20,6 +20,10 @@ void setup() {
 void loop() {
   controller.get_button(Controller::Button1)->do_if_pressed([&] {
     parser.parse_command(Command::Stop, data_buffer);
+    comms.send_data(data_buffer, strlen(data_buffer));
+    if (serial_state) {
+      Serial.println(data_buffer);
+    }
     controller.calibrate();
   });
 
@@ -31,6 +35,7 @@ void loop() {
     serial_state = !serial_state;
   });
 
+  parser.parse_movement(controller, data_buffer);
   comms.send_data(data_buffer, strlen(data_buffer));
 
   if (serial_state) {
