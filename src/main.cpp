@@ -20,7 +20,7 @@ void setup() {
 void loop() {
   controller.get_button(Controller::Button1)->do_if_pressed([&] {
     parser.parse_command(Command::Stop, data_buffer);
-    comms.send_data(data_buffer, strlen(data_buffer));
+    comms.send_data(data_buffer);
     if (serial_state) {
       Serial.println(data_buffer);
     }
@@ -36,9 +36,11 @@ void loop() {
   });
 
   parser.parse_movement(controller, data_buffer);
-  comms.send_data(data_buffer, strlen(data_buffer));
+  comms.send_data(data_buffer);
 
   if (serial_state) {
+    Serial.print(strlen(data_buffer));
+    Serial.print("B - ");
     Serial.println(data_buffer);
   }
 }

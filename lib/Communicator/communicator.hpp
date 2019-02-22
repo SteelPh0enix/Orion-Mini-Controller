@@ -11,7 +11,7 @@ class Communicator {
   void initialize();
   bool initialized() const;
 
-  void send_data(char const* data, unsigned length);
+  void send_data(char const* data);
 
   void print_debug_data();
 

@@ -23,6 +23,6 @@ constexpr const char* ArmCramp{"ACRP"};
 enum class Command { None, Stop };
 
 namespace RF24Constant {
-constexpr unsigned char radio_address[5]{0x00, 0xEF, 0xBE, 0xAD, 0xDE};
-constexpr unsigned char rover_address[5]{0xFF, 0xEF, 0xBE, 0xAD, 0xDE};
+constexpr unsigned char radio_address[6]{"AROVR"};
+constexpr unsigned char rover_address[6]{"ZROVR"};
 }  // namespace RF24Constant
