@@ -8,7 +8,7 @@ Module of choice is nRF24L01+, which allows to send data with speeds up to 2Mbps
 
 ### Working with 32-byte packets
 
-Since the data representation of choice is JSON, single communicate can be quite long. In case of this remote, it's around 53 up to 71 bytes long, so the whole it can fit in 2 to 3 packets. However, just sending the packets one-by-one is not a perfect solution (even with code that handles communicates longer than 32 bytes), because if I try it, this happens:
+Since the data representation of choice is JSON, single communicate can be quite long. In case of this remote, it's around 53 up to 71 bytes long, so it can fit in 2 to 3 packets. However, just sending the packets one-by-one is not a perfect solution (even with code that handles communicates longer than 32 bytes), because if I try it, this happens:
 
 ![how to NOT send data](../media/how_not_send_data.png)
 
