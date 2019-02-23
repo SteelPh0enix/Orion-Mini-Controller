@@ -23,3 +23,40 @@ Three ideas that came to my head are:
 2. **Put all readings in different data format** so it won't be longer than 32 bytes. This is a sure solution, but i'd either have to use messagepack or my own data format. Doable, but i'd prefer sticking to JSON.
 
 3. **Keep tinkering** - I only tried changing baud rates, so i still have few options, like manual ACK, or trying different packet sizes and even manual nRF24 handling. For now, i will stick to that.
+
+## Solution
+
+I've decided to make JSON-dependent receive function.
+
+```cpp
+void Receiver::read_data(char* data) {
+  if (!initialized()) return;
+
+  unsigned buffer_position{0};
+  char buffer[RF24Constant::PayloadSize + 1]{};
+
+  // While whole message isn't received...
+  while (Utility::last_char(buffer) != '}') {
+    if (m_radio.available()) {
+      // Receive next packet
+      m_radio.read(buffer, RF24Constant::PayloadSize);
+      // Check if it's first packet
+      if (Utility::first_char(buffer) == '{') {
+        strcpy(data, buffer);
+        buffer_position = RF24Constant::PayloadSize;
+      } else {
+        // If it's not, then it's probably next packet
+        strcpy(data + buffer_position, buffer);
+        buffer_position += RF24Constant::PayloadSize;
+      }
+    } else {
+      // Or wait for it
+      delay(RF24Constant::MessageMaxDelay);
+    }
+  }
+}
+```
+
+Basically, it reads the data basing on first and last character of every packet. Since all the JSON's i'm sending are flat, there will always be single '{' in first packet, and single '}' in last one, so it's pretty error-proof solution, until i'll decide to change JSON to non-flat or completely change message format.
+
+JSON-independent implementation was not chosen, because i don't have enough time right now to create it and properly test. That kind of solution would need custom transport layer implementation, and i's an overkill for my problem. Maybe in the future i'll make a RF24-basing library for that.
