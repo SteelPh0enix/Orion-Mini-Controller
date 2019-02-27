@@ -43,12 +43,30 @@ void JsonDataParser::parse_movement(Controller const& controller,
       break;
   }
 
+  // Normalize joypad data to -180 : 180
+  left_joypad_data.y =
+      constrain(map(left_joypad_data.y, JoypadMaxConstants::LeftMainJoypadDown,
+                    JoypadMaxConstants::LeftMainJoypadUp, -180, 180),
+                -180, 180);
+  left_joypad_data.x =
+      constrain(map(left_joypad_data.x, JoypadMaxConstants::LeftMainJoypadLeft,
+                    JoypadMaxConstants::LeftMainJoypadRight, -180, 180),
+                -180, 180);
+  right_joypad_data.y = constrain(
+      map(right_joypad_data.y, JoypadMaxConstants::RightMainJoypadDown,
+          JoypadMaxConstants::RightMainJoypadUp, -180, 180),
+      -180, 180);
+  right_joypad_data.x = constrain(
+      map(right_joypad_data.x, JoypadMaxConstants::RightMainJoypadLeft,
+          JoypadMaxConstants::RightMainJoypadRight, -180, 180),
+      -180, 180);
+
   // Put it in JSON
   json[JsonConstant::Speed] = left_joypad_data.y;
   json[JsonConstant::Turning] = left_joypad_data.x;
-  json[JsonConstant::ArmRotation] = right_joypad_data.x;
-  json[JsonConstant::ArmElbow] = right_joypad_data.y;
-  json[JsonConstant::ArmGrasper] = grasper_speed;
+  json[JsonConstant::ArmTurntable] = right_joypad_data.x;
+  json[JsonConstant::ArmShoulder] = right_joypad_data.y;
+  json[JsonConstant::ArmForearm] = grasper_speed;
   json[JsonConstant::ArmCramp] = cramp_speed;
 
 #ifdef DEBUG_JSON_PARSING
@@ -73,9 +91,9 @@ void JsonDataParser::parse_command(Command command, char* buffer) {
       // Put it in JSON
       json[JsonConstant::Speed] = 0;
       json[JsonConstant::Turning] = 0;
-      json[JsonConstant::ArmRotation] = 0;
-      json[JsonConstant::ArmElbow] = 0;
-      json[JsonConstant::ArmGrasper] = 0;
+      json[JsonConstant::ArmTurntable] = 0;
+      json[JsonConstant::ArmShoulder] = 0;
+      json[JsonConstant::ArmForearm] = 0;
       json[JsonConstant::ArmCramp] = 0;
 
     case Command::None:
