@@ -27,6 +27,7 @@ namespace RF24Constant {
 constexpr unsigned char RadioAddress[6]{"AROVR"};
 constexpr unsigned char RoverAddress[6]{"ZROVR"};
 constexpr unsigned PayloadSize{32};
+constexpr unsigned Channel{100};
 }  // namespace RF24Constant
 
 namespace JoypadMaxConstants {

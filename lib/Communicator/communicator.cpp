@@ -4,6 +4,7 @@
 
 void Communicator::initialize() {
   m_radio.begin();
+  m_radio.setChannel(RF24Constant::Channel);
   m_radio.setAutoAck(1);
   m_radio.setPayloadSize(RF24Constant::PayloadSize);
   m_radio.setPALevel(RF24_PA_MAX);
