@@ -30,7 +30,12 @@ constexpr unsigned PayloadSize{32};
 constexpr unsigned Channel{100};
 }  // namespace RF24Constant
 
-namespace JoypadMaxConstants {
+namespace NormalizationConstant {
+constexpr int MaxNormalizedValue{180};
+constexpr int MinNormalizedValue{-180};
+}  // namespace NormalizationConstant
+
+namespace JoypadMaxConstant {
 constexpr int LeftMainJoypadUp{355};
 constexpr int LeftMainJoypadDown{-355};
 constexpr int LeftMainJoypadLeft{-360};
@@ -42,14 +47,14 @@ constexpr int RightMainJoypadLeft{-360};
 constexpr int RightMainJoypadRight{360};
 
 // TBD: not needed now
-constexpr int LeftAdditionalJoypadUp{};
-constexpr int LeftAdditionalJoypadDown{};
-constexpr int LeftAdditionalJoypadLeft{};
-constexpr int LeftAdditionalJoypadRight{};
+constexpr int LeftAdditionalJoypadUp{500};
+constexpr int LeftAdditionalJoypadDown{-500};
+constexpr int LeftAdditionalJoypadLeft{-500};
+constexpr int LeftAdditionalJoypadRight{500};
 
-constexpr int RightAdditionalJoypadUp{};
-constexpr int RightAdditionalJoypadDown{};
-constexpr int RightAdditionalJoypadLeft{};
-constexpr int RightAdditionalJoypadRight{};
+constexpr int RightAdditionalJoypadUp{500};
+constexpr int RightAdditionalJoypadDown{-500};
+constexpr int RightAdditionalJoypadLeft{-500};
+constexpr int RightAdditionalJoypadRight{500};
 
-}  // namespace JoypadMaxConstants
+}  // namespace JoypadMaxConstant
