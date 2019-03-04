@@ -90,6 +90,7 @@ void JsonDataParser::parse_command(Command command, char* buffer) {
       json[JsonConstant::ArmTurntable] = 0;
       json[JsonConstant::ArmShoulder] = 0;
       json[JsonConstant::ArmForearm] = 0;
+      json[JsonConstant::ArmWrist] = 0;
       json[JsonConstant::ArmCramp] = 0;
 
     case Command::None:
